@@ -12,6 +12,18 @@ class SessionsController < ApplicationController
         end
     end
 
+    def show
+        user = User.find_by(id: session[:user_id])
+
+        if user
+            render json: user.as_json(:except => [:password_digest, :created_at, :updated_at])
+        else
+            render :json => {
+                error: "User is not logged in"
+            }
+        end
+    end
+
     def destroy
         session.clear
         render json: {
