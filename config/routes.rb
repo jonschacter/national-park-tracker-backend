@@ -3,4 +3,5 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     get "/current_user", to: "sessions#show"
     post "/signup", to: "users#create"
+    resources :visits
 end
