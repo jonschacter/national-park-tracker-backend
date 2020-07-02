@@ -40,4 +40,3 @@ class Park < ApplicationRecord
     end
 end
 
-# URL = "https://developer.nps.gov/api/v1/parks?&limit=5&api_key=OwNvFO9PgnzaBuEJMEol0fpU5JwIUYO1WJbxGbL9"
