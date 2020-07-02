@@ -22,6 +22,23 @@ class VisitsController < ApplicationController
         end
     end
 
+    def update
+        visit = Visit.find_by(id: params[:id])
+        if visit
+            if visit.update(visit_params)
+                render :json => visit.as_json(:except => [:created_at, :updated_at])
+            else
+                render :json => {
+                    error: visit.error.full_messages.to_sentence
+                }
+            end
+        else
+            render :json => {
+                error: "Visit could not be found"
+            }
+        end
+    end
+
     def destroy
         visit = Visit.find_by(id: params[:id])
         if visit
