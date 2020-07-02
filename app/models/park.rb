@@ -2,7 +2,8 @@ class Park < ApplicationRecord
     has_many :addresses
     has_many :images
 
-    def self.scrape(url)
+    def self.scrape(startInt)
+        url = "https://developer.nps.gov/api/v1/parks?&start=#{startInt}&api_key=OwNvFO9PgnzaBuEJMEol0fpU5JwIUYO1WJbxGbL9"
         resp = RestClient.get(url)
         resp_hash = JSON.parse(resp.body, symbolize_names:true)
         array = resp_hash[:data]
