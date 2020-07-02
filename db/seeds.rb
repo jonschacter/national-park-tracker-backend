@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+# jon = User.create(username: "jschacter", password: "password")
+
+# jon = User.first
+# jon.visits.create(start_date: "2020-05-30", end_date: "2020-05-31", park_code: "brca")
+# jon.visits.create(start_date: "2020-06-15", end_date: "2020-06-20", park_code: "saan")
+
+# URL = "https://developer.nps.gov/api/v1/parks?&limit=5&api_key=OwNvFO9PgnzaBuEJMEol0fpU5JwIUYO1WJbxGbL9"
+
+Park.scrape("https://developer.nps.gov/api/v1/parks?&start=449&api_key=OwNvFO9PgnzaBuEJMEol0fpU5JwIUYO1WJbxGbL9")
