@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_190953) do
+ActiveRecord::Schema.define(version: 2020_07_02_193436) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "line1"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_190953) do
     t.integer "user_id"
     t.string "start_date"
     t.string "end_date"
-    t.string "park_id"
+    t.integer "park_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
