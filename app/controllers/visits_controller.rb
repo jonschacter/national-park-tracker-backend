@@ -62,6 +62,6 @@ class VisitsController < ApplicationController
     private
 
     def visit_params
-        params.require(:visit).permit(:user_id, :start_date, :end_date, :park_code)
+        params.require(:visit).permit(:user_id, :start_date, :end_date, :park_id)
     end
 end
