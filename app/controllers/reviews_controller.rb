@@ -41,6 +41,27 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def update
+        review = Review.find_by(id: params[:id])
+        if review
+            if review.update(review_params)
+                render json: review.as_json(:include => {
+                    :user => {
+                        :only => [:id, :username]
+                    }
+                }, except: [:created_at])
+            else
+                render :json => {
+                    error: visit.error.full_messages.to_sentence
+                }
+            end
+        else
+            render :json => {
+                error: "Review could not be found"
+            }
+        end
+    end
+
     private
 
     def review_params
