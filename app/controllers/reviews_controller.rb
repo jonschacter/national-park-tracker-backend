@@ -62,6 +62,26 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def destroy
+        review = Review.find_by(id: params[:id])
+        if review
+            review.destroy
+            if review.user == current_user
+                render :json => {
+                    notice: "Review successfully deleted"
+                }
+            else
+                render :json => {
+                    error: "You are not authorized to delete this review"
+                }
+            end
+        else
+            render :json => {
+                error: "Review could not be found"
+            }
+        end
+    end
+
     private
 
     def review_params
