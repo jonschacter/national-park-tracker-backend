@@ -11,5 +11,5 @@
 #     Park.scrape(start)
 # end
 
-# Review.create(rating: 4, content: "Beautiful views!", visit_id: 1)
-# Review.create(rating: 1, content: "Couldn't find parking and park rangers were rude.", visit_id: 2)
+# Review.create(content: "Beautiful views!", visit_id: 1)
+# Review.create(content: "Couldn't find parking and park rangers were rude.", visit_id: 2)
