@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     resources :parks, only: [:index] do
         resources :reviews, only: [:index]
     end
+
+    resources :reviews, only: [:create]
 end
