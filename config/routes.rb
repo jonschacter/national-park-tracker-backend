@@ -3,6 +3,12 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     get "/current_user", to: "sessions#show"
     post "/signup", to: "users#create"
-    resources :visits, only: [:index, :create, :update, :destroy]
-    resources :parks, only: [:index]
+    
+    resources :visits, only: [:index, :create, :update, :destroy] do
+        resources :reviews, only: [:index]
+    end
+    
+    resources :parks, only: [:index] do
+        resources :reviews, only: [:index]
+    end
 end
