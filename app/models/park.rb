@@ -13,11 +13,10 @@ class Park < ApplicationRecord
             name = park[:name]
             states = park[:states]
             description = park[:description]
-            park_code = park[:parkCode]
             images = park[:images]
             addresses = park[:addresses]
 
-            parkObj = Park.create(name: name, states: states, description: description, park_code: park_code)
+            parkObj = Park.create(name: name, states: states, description: description)
             
             images.each do |image|
                 url = image[:url]
