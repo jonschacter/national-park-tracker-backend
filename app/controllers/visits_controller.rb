@@ -2,7 +2,7 @@ class VisitsController < ApplicationController
     def index
         if logged_in?
             visits = current_user.visits
-            render :json => visits.as_json(:except => [:created_at, :updated_at])
+            render json: visits, each_serializer: VisitSerializer
         else
             render :json => {
                 error: "You need to log in to view this"
@@ -14,7 +14,7 @@ class VisitsController < ApplicationController
         visit = Visit.new(visit_params)
 
         if visit.save
-            render :json => visit.as_json(:except => [:created_at, :updated_at])
+            render json: visit, serializer: VisitSerializer
         else
             render :json => {
                 error: visit.errors.full_messages.to_sentence
@@ -26,7 +26,7 @@ class VisitsController < ApplicationController
         visit = Visit.find_by(id: params[:id])
         if visit
             if visit.update(visit_params)
-                render :json => visit.as_json(:except => [:created_at, :updated_at])
+                render json: visit, serializer: VisitSerializer
             else
                 render :json => {
                     error: visit.error.full_messages.to_sentence

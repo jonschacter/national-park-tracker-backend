@@ -2,18 +2,10 @@ class ReviewsController < ApplicationController
     def index
         if park = Park.find_by(id: params[:park_id])
             reviews = Review.all.select{|review| review.park == park}
-            render json: reviews.as_json(:include => {
-                :user => {
-                    :only => [:id, :username]
-                }
-            }, except: [:created_at])
+            render json: reviews, each_serializer: ReviewSerializer
         elsif visit = Visit.find_by(id: params[:visit_id])
             if visit.review
-                render json: visit.review.as_json(:include => {
-                    :user => {
-                        :only => [:id, :username]
-                    }
-                }, except: [:created_at])
+                render json: visit.review, serializer: ReviewSerializer
             else
                 render :json => {
                     notice: "This visit does not yet have a review"
@@ -29,11 +21,7 @@ class ReviewsController < ApplicationController
     def create
         review = Review.new(review_params)
         if review.save
-            render json: review.as_json(:include => {
-                :user => {
-                    :only => [:id, :username]
-                }
-            }, except: [:created_at])
+            render json: review, serializer: ReviewSerializer
         else
             render :json => {
                 error: review.errors.full_messages.to_sentence
@@ -45,11 +33,7 @@ class ReviewsController < ApplicationController
         review = Review.find_by(id: params[:id])
         if review
             if review.update(review_params)
-                render json: review.as_json(:include => {
-                    :user => {
-                        :only => [:id, :username]
-                    }
-                }, except: [:created_at])
+                render json: review, serializer: ReviewSerializer
             else
                 render :json => {
                     error: visit.error.full_messages.to_sentence

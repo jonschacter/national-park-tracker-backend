@@ -3,7 +3,7 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         if user.save
             session[:user_id] = user.id
-            render json: user.as_json(:except => [:password_digest, :created_at, :updated_at])
+            render json: user, serializer: UserSerializer
         else
             render :json => {
                 error: user.errors.full_messages.to_sentence
