@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This backend for the National Park Tracker app allows you to maintain and host the required data. Note: because the nps.gov API was very slow and difficult to work with this backend doubles as a scraper for the NPS API.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+execute:
 
-* System dependencies
+    $ bundle install
+    $ rails db:migrate
+    $ rails db:seed
 
-* Configuration
+and launch the local host server with
 
-* Database creation
+    $ rails s
 
-* Database initialization
+## Related repositories
 
-* How to run the test suite
+[National Park Tracker Frontend](https://github.com/jonschacter/national-park-tracker-frontend)
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
 
-* Deployment instructions
+Bug reports and pull requests are welcome on GitHub at https://github.com/jonschacter/national-park-tracker-backend
 
-* ...
+## License
+
+The application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
