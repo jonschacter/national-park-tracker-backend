@@ -5,7 +5,7 @@ class Park < ApplicationRecord
     has_many :reviews, through: :visits
 
     def self.scrape(startInt)
-        url = "https://developer.nps.gov/api/v1/parks?&start=#{startInt}&api_key=OwNvFO9PgnzaBuEJMEol0fpU5JwIUYO1WJbxGbL9"
+        url = "https://developer.nps.gov/api/v1/parks?&start=#{startInt}&api_key=#{ENV['NPS_API_KEY']}"
         resp = RestClient.get(url)
         resp_hash = JSON.parse(resp.body, symbolize_names:true)
         array = resp_hash[:data]
@@ -15,9 +15,10 @@ class Park < ApplicationRecord
             description = park[:description]
             images = park[:images]
             addresses = park[:addresses]
+            code = park[:parkCode]
 
-            parkObj = Park.create(name: name, states: states, description: description)
-            
+            parkObj = Park.find_or_create_by(code: code)
+            parkObj.update(name: name, states: states, description: description, images:[], addresses:[])
             images.each do |image|
                 url = image[:url]
                 caption = image[:caption]
