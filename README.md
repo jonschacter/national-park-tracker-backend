@@ -1,6 +1,8 @@
 # README
 
-This backend for the National Park Tracker app allows you to maintain and host the required data. Note: because the nps.gov API was very slow and difficult to work with this backend doubles as a scraper for the NPS API.
+This backend for the National Park Tracker app allows you to maintain and host the required data for users, visits and parks. 
+
+Note: The NPS.gov API response time was too slow to build a helpful application around. I have included a script in the seed file to save and update their data into this database for quicker information retrieval. Be sure to use seed file when first setting up the application and any time you would like to update the park data. This may take several minutes.
 
 ## Installation
 
@@ -8,6 +10,9 @@ execute:
 
     $ bundle install
     $ rails db:migrate
+
+download or update the NPS park data:
+
     $ rails db:seed
 
 and launch the local host server with
