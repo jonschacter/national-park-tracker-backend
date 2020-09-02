@@ -23,6 +23,10 @@ and launch the local host server with
 
 [National Park Tracker Frontend](https://github.com/jonschacter/national-park-tracker-frontend)
 
+## Video Walkthrough
+
+https://youtu.be/Gpk5dYMYY2E
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jonschacter/national-park-tracker-backend
