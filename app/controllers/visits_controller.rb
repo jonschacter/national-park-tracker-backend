@@ -29,7 +29,7 @@ class VisitsController < ApplicationController
                 render json: visit, serializer: VisitSerializer
             else
                 render :json => {
-                    error: visit.error.full_messages.to_sentence
+                    error: visit.errors.full_messages.to_sentence
                 }
             end
         else
