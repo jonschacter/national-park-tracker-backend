@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
                 render json: review, serializer: ReviewSerializer
             else
                 render :json => {
-                    error: visit.error.full_messages.to_sentence
+                    error: review.errors.full_messages.to_sentence
                 }
             end
         else
