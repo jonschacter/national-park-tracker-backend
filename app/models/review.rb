@@ -4,5 +4,5 @@ class Review < ApplicationRecord
     has_one :park, through: :visit
     
     validates :visit_id, presence: true
-    validates :content, presence: true
+    validates :content, presence: true, allow_blank: false
 end
