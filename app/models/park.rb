@@ -4,6 +4,7 @@ class Park < ApplicationRecord
     has_many :visits
     has_many :reviews, through: :visits
 
+    # NPS API was too slow and unresponsive to be used directly through my frontend. This is scrape class method that I can run weekly to scrape and create/update relevant park data in my API 
     def self.scrape(startInt)
         url = "https://developer.nps.gov/api/v1/parks?&start=#{startInt}&api_key=#{ENV['NPS_API_KEY']}"
         resp = RestClient.get(url)

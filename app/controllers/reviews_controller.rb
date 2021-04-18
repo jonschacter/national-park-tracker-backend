@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
     def index
+        # if directed from park/reviews
         if park = Park.find_by(id: params[:park_id])
             reviews = Review.all.select{|review| review.park == park}
             render json: reviews, each_serializer: ReviewSerializer
+        # if directed from visit/:id/reviews
         elsif visit = Visit.find_by(id: params[:visit_id])
             if visit.review
                 render json: visit.review, serializer: ReviewSerializer
