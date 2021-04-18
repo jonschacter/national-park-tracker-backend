@@ -21,6 +21,7 @@ gem 'rest-client'
 gem 'json'
 gem 'active_model_serializers'
 gem 'dotenv-rails'
+gem 'rails_same_site_cookie'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
