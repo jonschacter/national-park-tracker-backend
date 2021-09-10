@@ -42,8 +42,8 @@ class VisitsController < ApplicationController
     def destroy
         visit = Visit.find_by(id: params[:id])
         if visit
-            visit.destroy
             if visit.user == current_user
+                visit.destroy
                 render :json => {
                     notice: "Visit successfully deleted"
                 }
